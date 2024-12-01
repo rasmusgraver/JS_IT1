@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro Javascript</title>
+    <style>
+        #overskrift {
+            position: absolute;
+            top: 20px;
+            left: 100px;
+            width: fit-content;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="overskrift" onclick="styleOverskrift()">Endelig tid for JS!</h1>
+
+    <script>
+        // Lager referanse til mine html-elementer:
+        const overskrift = document.getElementById("overskrift")
+        const tekst = document.getElementById("tekst")
+
+        function styleOverskrift() {
+            overskrift.style.color = "red"
+            overskrift.style.backgroundColor = "blue"
+            overskrift.style.padding = "20px"
+            overskrift.style.fontSize = "40px"
+            overskrift.style.width = "fit-content"
+        }
+
+
+    </script>
+</body>
+
+</html>
