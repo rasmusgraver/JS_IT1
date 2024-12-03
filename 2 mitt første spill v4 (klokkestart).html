@@ -1,144 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Mitt Første Spill</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mitt Første Spill</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+            #overskrift {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                color: white;
+                background-color: black;
+                width: fit-content;
+                padding: "20px";
+                font-size: "40px";
+                transition: 0.2s;
+            }
 
-        #overskrift {
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            color: white;
-            background-color: black;
-            width: fit-content;
-            padding: "20px";
-            font-size: "40px";
-            transition: 0.2s;
-        }
+            .grid_container {
+                display: grid;
+                grid-template-columns: 240px 240px;
+                grid-template-rows: 70px 300px;
+                width: fit-content;
+                margin: 20px auto;
+            }
 
-        .grid_container {
-            display: grid;
-            grid-template-columns: 240px 240px;
-            grid-template-rows: 70px 300px;
-            width: fit-content;
-            margin: 20px auto;
-        }
+            .grid_container > div {
+                border: 1px solid black;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
 
-        .grid_container>div {
-            border: 1px solid black;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+            #ramme {
+                position: relative;
+                grid-column: 1/3;
+                grid-row: 2/3;
+                background-color: aliceblue;
+            }
+        </style>
+    </head>
 
-        #ramme {
-            position: relative;
-            grid-column: 1/3;
-            grid-row: 2/3;
-            background-color: aliceblue;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="grid_container">
-
-        <div>
-            <h1>Ant trykk</h1>
-            <p id="antKlikk">0</p>
-        </div>
-        <div>
-            <h1>Klokke</h1>
-            <p id="klokke">10 sek</p>
-        </div>
-        <div id="ramme">
-            <h1 id="overskrift" onclick="flytt()">Klikk meg!</h1>
+    <body>
+        <div class="grid_container">
+            <div>
+                <h1>Ant trykk</h1>
+                <p id="klikk">0</p>
+            </div>
+            <div>
+                <h1>Klokke</h1>
+                <p id="klokke">10 sek</p>
+            </div>
+            <div id="ramme">
+                <h1 id="overskrift" onclick="flytt()">Klikk meg!</h1>
+            </div>
         </div>
 
-    </div>
+        <script>
+            // Lager referanse til mine html-elementer:
+            const overskrift = document.getElementById("overskrift")
+            const klokkeElement = document.getElementById("klokke")
+            const klikkElement = document.getElementById("klikk")
 
-    <script>
-        // Lager referanse til mine html-elementer:
-        const overskrift = document.getElementById("overskrift")
-        const klokkeElement = document.getElementById("klokke")
-        const antKlikkElement = document.getElementById("antKlikk")
+            // Hvor mange ganger har spilleren klikket på elementet:
+            let klikk = 0
+            // Klokke-variabel: Hvor lang tid er igjen?
+            let klokke = 10
+            // Referanse til klokka som tikker:
+            let klokkeRef = null
 
-        // Hvor mange ganger har spilleren klikket på elementet:
-        let antKlikk = 0
-        // Klokke-variabel: Hvor lang tid er igjen?
-        let klokke = 10
-        // Referanse til klokka som tikker:
-        let klokkeRef = null
+            // Er spillet slutt?
+            let spillSlutt = false
 
-        // Er spillet slutt?
-        let spillFerdig = false
-
-        function tikkKlokke() {
-            klokke -= 1
-            klokkeElement.innerHTML = klokke + " sek"
-            if (klokke <= 0) {
-                document.body.style.backgroundColor = "red"
-                // Spillet er slutt:
-                spillFerdig = true
-                // Stopper klokka:
-                clearInterval(klokkeRef)
-            }
-        }
-
-        function flytt() {
-
-            // Ikke gjør noe mer om spillet er ferdig:
-            if (spillFerdig) {
-                return
+            function tikkKlokke() {
+                klokke -= 1
+                klokkeElement.innerHTML = klokke + " sek"
+                if (klokke <= 0) {
+                    document.body.style.backgroundColor = "red"
+                    // Spillet er slutt:
+                    spillSlutt = true
+                    // Stopper klokka:
+                    clearInterval(klokkeRef)
+                }
             }
 
-            // Start klokka om den ikke går:
-            if (!klokkeRef) {
-                // setInterval kaller funksjonen vår hvert tusende millisekund:
-                klokkeRef = setInterval(tikkKlokke, 1000)
+            function flytt() {
+                // Ikke gjør noe mer om spillet er ferdig:
+                if (spillSlutt) {
+                    return
+                }
+
+                // Start klokka om den ikke går:
+                if (!klokkeRef) {
+                    // setInterval kaller funksjonen vår hvert tusende millisekund:
+                    klokkeRef = setInterval(tikkKlokke, 1000)
+                }
+
+                // Øk antall klikk, og oppdater i HTML-elementet:
+                klikk++
+                klikkElement.innerHTML = klikk
+
+                // Om du har klikket 10 ganger har du vunnet:
+                if (klikk >= 10) {
+                    document.body.style.backgroundColor = "green"
+                    // Spillet er slutt:
+                    spillSlutt = true
+                    // Stopper klokka:
+                    clearInterval(klokkeRef)
+                }
+
+                // Gi en tilfeldig bakgrunnsfarge:
+                const r = Math.floor(Math.random() * 255)
+                const g = Math.floor(Math.random() * 255)
+                const b = Math.floor(Math.random() * 255)
+                // Merk at vi må "bygge opp" tekst-strengen med "-tegn og , (hold tunga rett i munnen her!)
+                overskrift.style.backgroundColor =
+                    "rgb(" + r + "," + g + "," + b + ")"
+
+                // Vi flytter elementet vårt til tilfeldig posisjon:
+                // TODO: Finne maxWidth og maxHeight ut i fra elementene
+                const tilf1 = Math.floor(Math.random() * 300)
+                const tilf2 = Math.floor(Math.random() * 300)
+
+                // NB: HUSK left og top har px til slutt!
+                overskrift.style.top = tilf1 + "px"
+                overskrift.style.left = tilf2 + "px"
             }
-
-            // Øk antall klikk, og oppdater i HTML-elementet:
-            antKlikk++
-            antKlikkElement.innerHTML = antKlikk
-
-            // Om du har klikket 10 ganger har du vunnet:
-            if (antKlikk >= 10) {
-                document.body.style.backgroundColor = "green"
-                // Spillet er slutt:
-                spillFerdig = true
-                // Stopper klokka:
-                clearInterval(klokkeRef)
-            }
-
-            // Gi en tilfeldig bakgrunnsfarge:
-            const r = Math.floor(Math.random() * 255)
-            const g = Math.floor(Math.random() * 255)
-            const b = Math.floor(Math.random() * 255)
-            // Merk at vi må "bygge opp" tekst-strengen med "-tegn og , (hold tunga rett i munnen her!)
-            overskrift.style.backgroundColor =
-                "rgb(" + r + "," + g + "," + b + ")"
-
-            // Vi flytter elementet vårt til tilfeldig posisjon:
-            // TODO: Finne maxWidth og maxHeight ut i fra elementene
-            const tilf1 = Math.floor(Math.random() * 300)
-            const tilf2 = Math.floor(Math.random() * 300)
-
-            // NB: HUSK left og top har px til slutt!
-            overskrift.style.top = tilf1 + "px"
-            overskrift.style.left = tilf2 + "px"
-        }
-    </script>
-</body>
-
+        </script>
+    </body>
 </html>
