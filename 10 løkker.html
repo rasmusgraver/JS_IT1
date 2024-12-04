@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Løkker</title>
+</head>
+<body>
+
+    <script>
+        // Vi bruker løkker for å gjøre noe flere ganger
+        // F.eks skrive "hei" 3 ganger:
+        // Kan gjøre dette som en løkke:
+        for (let i=0; i<3; i++) {
+            console.log("Hei. i er nå", i)
+        }
+
+        // TODO: Skriv ut 3-gangern opp til 20:
+        // Med en for-løkke:
+        for (let i=0; i<20; i+=3) {
+            console.log("i er nå", i)
+        }
+
+        let t = 0
+        while (t<20) {
+            console.log("t er nå", t)
+            t += 3
+        }
+
+        // Økonomi-oppgave:
+        // Jeg setter inn 10.000 kr på konto
+        // Jeg får 5% rente per år
+        // - Hvor mange år før jeg har 100.000 kr på konto?
+        const vekstfaktor = 1.05
+        let saldo = 10000
+        let aar = 0
+        while (saldo <= 100000) {
+            saldo = saldo*vekstfaktor
+            aar++
+        }
+        console.log("Yes! Jeg har mer enn 100.000 kr!")
+        console.log("Jeg har nå", saldo.toFixed(2), "kr på konto")
+        console.log("Det tok", aar, "år")
+
+        
+    </script>
+</body>
+</html>

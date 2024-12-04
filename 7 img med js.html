@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image med JS</title>
+    <style>
+        img {
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <img id="bilde" src="musikk.jpg" alt="musikk">
+
+    <script>
+        const bildeElement = document.getElementById("bilde")
+        // Vi kan logge "selve elementet:"
+        console.log(bildeElement)
+        // bildeElement.src - viser filnavnet
+        console.log(bildeElement.src)
+        // vi kan også ENDRE bildet sin "source" - til å vise et annet bilde
+        bildeElement.src = "netflix.jpg"
+    </script>
+</body>
+</html>

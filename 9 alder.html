@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alder</title>
+</head>
+<body>
+    
+    <script>
+        let alder = 15
+        // Lag et tilfeldig tall x som er mellom 0 og 5
+        const x = Math.floor(Math.random() * 5)
+
+        // Logg begge tallene 
+        console.log("Alder:", alder)
+        console.log("Tilfeldig tall x:", x)
+
+        // Legg sammen x til alder og logg alder på nytt
+        alder = alder + x
+        console.log("Ny alder:", alder)
+
+        if (alder >= 18) {
+            console.log("Du kan ta lappen")
+        } else {
+            console.log("Du må vente", 18-alder, "år med å ta lappen")
+        } 
+
+    </script>
+</body>
+</html>

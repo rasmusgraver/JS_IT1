@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image med JS</title>
+    <style>
+        img {
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="bilde" onclick="endreBilde()" src="musikk.jpg" alt="musikk">
+
+    <script>
+        const bildeElement = document.getElementById("bilde")
+
+        function endreBilde() {
+            // Sjekk om src inneholder ordet "netflix":
+            if (bildeElement.src.includes("netflix")) {
+                bildeElement.src = "musikk.jpg"
+            } else {
+                bildeElement.src = "netflix.jpg"
+            }
+        }
+    </script>
+</body>
+
+</html>
