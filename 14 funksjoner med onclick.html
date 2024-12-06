@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funksjoner med onclick</title>
+</head>
+
+<body>
+
+    <h1 onclick="skiftFontSize(this)">Min overskrift</h1>
+    <p onclick="skiftFontSize(this)">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, voluptates!</p>
+
+    <ol>
+        <li onclick="skiftFontSize(this)">Punkt 1</li>
+        <li onclick="skiftFontSize(this)">Punkt 2</li>
+        <li onclick="skiftFontSize(this)">Punkt 3</li>
+    </ol>
+
+    <script>
+
+        function skiftFontSize(element) {
+            element.style.fontSize = "50px"
+        }
+
+    </script>
+</body>
+
+</html>

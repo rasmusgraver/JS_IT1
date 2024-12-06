@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Element</title>
+</head>
+<style>
+    input {
+        font-size: 20px;
+        border-radius: 4px;
+    }
+    button {
+        background-color: darkred;
+        color: lightgreen;
+        font-size: 20px;
+        border-radius: 4px;
+    }
+    p span {
+        font-weight: bold;
+    }
+</style>
+<body>
+    <h1>Input Element Text</h1>
+    <input id="input" type="text" placeholder="Skriv tekst her">
+    <button onclick="klikk()">Klikk meg</button>
+    <p>Du skrev: <span id="xxx">xxx</span> </p>
+
+    <script>
+        const inputElement = document.getElementById("input")
+        const xxxElement = document.getElementById("xxx")
+        
+        function klikk() {
+            const tekst = inputElement.value
+            console.log("Du skrev:", tekst)
+            xxxElement.innerHTML = tekst
+            inputElement.value = ""
+        }
+    </script>
+</body>
+</html>

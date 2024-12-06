@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funksjoner med onclick</title>
+</head>
+
+<body>
+
+    <h1 onclick="skiftFontSize(this)">Min overskrift</h1>
+    <p onclick="skiftFontSize(this)">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, voluptates!</p>
+
+    <ol>
+        <li onclick="skiftFargeOgFontsize(this, 'red') ">Punkt 1</li>
+        <li onclick="skiftFarge(this, 'blue') ">Punkt 2</li>
+        <li onclick="skiftFarge(this, 'yellow')">Punkt 3</li>
+    </ol>
+    <script>
+        function skiftFontSize(element) {
+            element.style.fontSize = "50px"
+        }
+        function skiftFarge(element, farge) {
+            element.style.color = farge
+        }
+        function skiftFargeOgFontsize(element, farge) {
+            skiftFarge(element, farge)
+            skiftFontSize(element)
+        }
+
+    </script>
+</body>
+
+</html>
