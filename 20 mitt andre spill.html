@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gjett tallet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 400px;
+            height: 400px;
+            background-color: aliceblue;
+            border: 1px solid black;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        h1 {
+            font-size: 60px;
+        }
+
+        p {
+            font-size: 30px;
+        }
+
+        input {
+            font-size: 30px;
+            width: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h1 onclick="sjekkGjett()">?</h1>
+        <input id="input" type="number" placeholder="Gjett tallet">
+        <p id="hint" onclick="sjekkGjett()"> </p>
+        <p id="antallGjett"></p>
+    </div>
+
+    <script>
+        const hintElm = document.getElementById("hint")
+        const tallet = Math.floor(Math.random() * 10);
+        console.log("Tallet du skal gjette er", tallet)
+        let antallGjett = 0
+        const maxGjett = 5 // Maks antall brukeren får lov til å gjette
+
+        function sjekkGjett() {
+            antallGjett++
+            document.getElementById("antallGjett").innerHTML = "Du har gjettet " + antallGjett + " ganger"
+            const gjett = document.getElementById("input").value
+            console.log("Brukeren gjettet", gjett)
+            // Clear input:
+            document.getElementById("input").value = ""
+            if (gjett == tallet) {
+                document.body.style.backgroundColor = "green"
+                hintElm.innerHTML = "Yeah! Du klarte det!"
+            } else if (gjett < tallet) {
+                hintElm.innerHTML = "Prøv et høyere tall"
+            } else {
+                hintElm.innerHTML = "Prøv et lavere tall"
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>
