@@ -1,18 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Fotball</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
-    <body>
-        <div id="bane">
-            <img id="ball" src="bilder/ball.png" alt="" />
-        </div>
 
-        <script>
-            // Her kommer JS...
-        </script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotball</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="bane">
+        <img id="ball" src="bilder/ball.png" alt="">
+    </div>
+
+    <script>
+        const baneElm = document.getElementById("bane")
+        const ballElm = document.getElementById("ball")
+        const maxLeft = baneElm.offsetWidth - ballElm.offsetWidth
+
+        let x = 0
+        let vx = 10 // fart i x-retning
+
+        function flytt() {
+            x += vx
+            ballElm.style.left = x + "px"
+            if (x > maxLeft || x < 0) {
+                // Har truffet en kant: Snu farts-retning:
+                vx = -vx
+            }
+        }
+
+        setInterval(flytt, 20)
+
+    </script>
+</body>
+
 </html>
