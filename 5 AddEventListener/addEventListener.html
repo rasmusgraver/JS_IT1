@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Event Listener</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+
+    <script>
+
+        function skiftFarge(event) {
+            console.log(event)
+            if (event.altKey) {
+                alert("Du trykket med alt key nede")
+            }
+            event.target.style.backgroundColor = "red"
+        }
+
+        document.getElementById("div1").addEventListener("click", skiftFarge)
+        document.getElementById("div2").addEventListener("mouseover", skiftFarge)
+
+
+    </script>
+</body>
+</html>
