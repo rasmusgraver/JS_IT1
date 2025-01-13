@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuerySelector</title>
+</head>
+<body>
+    <h1 id="overskrift">Hei</h1>
+    <p class="tekst">Her er en tekst</p>
+
+    <div>
+        <p>Tektselement nummer 2</p>
+    </div>
+
+    <script>
+        // Vi har lært å "ta tak" i et element med getElementById:
+        const overskriftElement = document.getElementById("overskrift")
+        console.log(overskriftElement)
+        // Vi kan også bruke QuerySelector:
+        const tekstElement = document.querySelector(".tekst")
+        console.log(tekstElement)
+        // Vi kan skrive css selectors:
+        const tekstElement2 = document.querySelector("div p")
+        console.log(tekstElement2)
+        tekstElement2.style.color = "green"
+
+    </script>
+</body>
+</html>
