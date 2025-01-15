@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Element fra en liste av elementer</title>
+    <style>
+        .container {
+            display: flex;
+            gap: 10px;
+        }
+        .container > div {
+            font-size: 20px;
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <!-- Her skal "barna" komme -->
+    </div>
+
+    <script>
+        const liste = [1,2,3,4,5]
+        const farger = ["red", "green", "blue", "yellow", "orange"]
+        const containerElm = document.querySelector(".container")
+        let i = 0 // Indeks for å velge rett farge fra lista
+        for (let tall of liste) {
+            const elm = document.createElement("div")
+            elm.innerHTML = tall
+            elm.style.backgroundColor = farger[i]
+            i++
+            containerElm.appendChild(elm)
+        }
+    </script>
+
+</body>
+</html>

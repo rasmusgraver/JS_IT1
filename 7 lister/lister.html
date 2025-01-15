@@ -9,30 +9,53 @@
         <script>
             // Vi lager en liste på denne måten:
             const liste = [1, 2, 3, 4, 5]
-
+            // Vi kan logge den til console:
+            console.log(liste)
             // Vi iterer over elementene slik:
             console.log("Med en for ... of ... løkke:")
             for (let element of liste) {
-                console.log(" - ", element)
+                console.log(element)
             }
+            // Vi kan bruke ett enkelt element slik:
+            console.log("Aksesserer enkelt-elementer:")
+            console.log(liste[0]) // Det første elementet i lista
+            console.log(liste[1]) // Det andre  elementet i lista
+
+            // Listen har lengde:
+            console.log("lengde:", liste.length) // 5
+
+            // Hent ut det siste elementet i lista:
+            console.log(liste[liste.length - 1])
+
+
+
+
 
             // Vi kan også bruke forEach:
             console.log("Med forEach:")
-            liste.forEach((element) => {
-                console.log(" * ", element)
+            liste.forEach( (element) => {
+                console.log(element)
             })
 
+
+
+
+            
             // Eller vi kan bruke en for-løkke:
             console.log("Med en for-løkke:")
             for (let i = 0; i < liste.length; i++) {
-                console.log(" + ", liste[i])
+                console.log(liste[i])
             }
 
             // Vi kan legger til og fjerne elementer fra lista:
             liste.pop() // Fjerner siste element
             liste.push(6) // Legger til et element til slutt på lista
-
             console.log("Listen etter endringer:", liste)
+
+            // Trenger ikke å være tall som er "elementene" i lista:
+            liste.push("En tekst")
+            // Finnes flere måter å endre en liste på utover pop og push - google it!
+            
         </script>
     </body>
 </html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CreateElement i JS</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <h1>Lage elementer ved hjelp av JS</h1>
+        <div class="container">
+
+        </div>
+
+        <script>
+            // Vi lager et element med createElement:
+            const elm = document.createElement("p")
+            // MERK: p sier hva slags element vi lager
+            // kan lage div, h1, img, table - hva du vil!
+            elm.innerHTML = "Jeg er et p element"
+            elm.style.color = "green"
+            elm.style.fontSize = "24px"
+            // MEN: Vi må "feste" elementet et sted på siden vår!
+            const containerElm = document.querySelector(".container")
+            // Vi fester den med appendChild:
+            containerElm.appendChild(elm)
+
+            // TODO: Lag h2 element, img element, en liste: med ol og li
+            const imgElm = document.createElement("img")
+            imgElm.src = "katt.png"
+            imgElm.style.width = "100px"
+
+        </script>
+    </body>
+</html>
