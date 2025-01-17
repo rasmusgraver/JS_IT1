@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kortspill</title>
+    <style>
+        body {
+            background-image: url("kortstokk/felt.webp");
+            background-size: 100% 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: fit-content;
+            max-width: 80%;
+            margin-left: 100px;
+        }
+
+        img {
+            width: 150px;
+            margin-left: -100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+    </div>
+
+    <script>
+        // 1: Lag en liste med alle 52 kort
+        let kortstokk = []
+        const suits = ["hearts", "diamonds", "spades", "clubs"]
+        for (const suit of suits) {
+            for (let i = 1; i <= 13; i++) {
+                const kortNavn = "kortstokk/" + i + "_of_" + suit + ".png"
+                kortstokk.push(kortNavn)
+            }
+        }
+        // Se kortstokken vår:
+        console.log(kortstokk)
+        console.log(kortstokk[51]) // Se hva kort nr 52 er
+
+        // 2 Shuffle kortstokken:
+
+        // Lager en funksjon ved navn "shuffle":
+        const shuffle = (array) => {
+            return array.map((a) => ({ sort: Math.random(), value: a }))
+                .sort((a, b) => a.sort - b.sort)
+                .map((a) => a.value);
+        };
+
+        // Bruker funksjonen "shuffle" til å blande kortene våre:
+        kortstokk = shuffle(kortstokk)
+
+        // Se kortstokken vår etter shuffling:
+        console.log(kortstokk)
+        console.log(kortstokk[51]) // Se hva kort nr 52 er
+
+
+        // Gå igjennom kortene, og legg dem ut på bordet:
+        for (const kortNavn of kortstokk) {
+            const imgElm = document.createElement("img")
+            imgElm.src = kortNavn
+            document.querySelector(".container").appendChild(imgElm)
+        }
+
+    </script>
+
+</body>
+
+</html>
