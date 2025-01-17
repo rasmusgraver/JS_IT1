@@ -49,16 +49,7 @@
         console.log(kortstokk[51]) // Se hva kort nr 52 er
 
         // 2 Shuffle kortstokken:
-
-        // Lager en funksjon ved navn "shuffle":
-        const shuffle = (array) => {
-            return array.map((a) => ({ sort: Math.random(), value: a }))
-                .sort((a, b) => a.sort - b.sort)
-                .map((a) => a.value);
-        };
-
-        // Bruker funksjonen "shuffle" til å blande kortene våre:
-        kortstokk = shuffle(kortstokk)
+        kortstokk = kortstokk.sort(() => Math.random() - 0.5);
 
         // Se kortstokken vår etter shuffling:
         console.log(kortstokk)
