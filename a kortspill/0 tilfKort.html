@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilfeldig kort</title>
+    <style>
+        img {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        const tilfTall = Math.floor(Math.random() * 13) + 1;
+
+        const bilde = document.createElement("img")
+        bilde.src = "kortstokk/" + tilfTall + "_of_clubs.png"
+        document.body.appendChild(bilde)
+
+    </script>
+    
+</body>
+</html>
