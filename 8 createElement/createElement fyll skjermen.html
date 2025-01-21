@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Element fra en liste av elementer</title>
-    <style>
-        .container {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .container > div {
-            font-size: 20px;
-            width: 100px;
-            height: 100px;
-            border: 1px solid black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
-</head>
-<body>
-    
-    <div class="container">
-        <!-- Her skal "barna" komme -->
-    </div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Create Element fra en liste av elementer</title>
+        <style>
+            .container {
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+            .container > div {
+                font-size: 20px;
+                width: 100px;
+                height: 100px;
+                border: 1px solid black;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Her skal "barna" komme -->
+        </div>
 
-    <script>
-        const farger = ["red", "green", "blue", "yellow", "orange"]
-        const containerElm = document.querySelector(".container")
-        for (let i = 0; i < 1000; i++) {
-            const elm = document.createElement("div")
-            elm.innerHTML = i
-            elm.style.backgroundColor = farger[i % farger.length]
-            containerElm.appendChild(elm)
-        }
-    </script>
+        <script>
+            const farger = ["red", "green", "blue", "yellow", "orange"]
+            const containerElm = document.querySelector(".container")
 
-</body>
+            for (let i = 0; i < 400; i++) {
+                const elm = document.createElement("div")
+                elm.innerHTML = i
+                elm.style.backgroundColor = "green"
+                containerElm.appendChild(elm)
+            }
+        </script>
+    </body>
 </html>
