@@ -27,13 +27,13 @@
         </div>
 
         <script>
-            const farger = ["red", "green", "blue", "yellow", "orange"]
+            const farger = ["red", "green", "blue", "yellow", "orange", "pink"]
             const containerElm = document.querySelector(".container")
 
-            for (let i = 0; i < 400; i++) {
+            for (let i = 0; i < 100; i++) {
                 const elm = document.createElement("div")
                 elm.innerHTML = i
-                elm.style.backgroundColor = "green"
+                elm.style.backgroundColor = farger[i%farger.length]
                 containerElm.appendChild(elm)
             }
         </script>
