@@ -11,51 +11,52 @@
             const liste = [1, 2, 3, 4, 5]
             // Vi kan logge den til console:
             console.log(liste)
-            // Vi iterer over elementene slik:
-            console.log("Med en for ... of ... løkke:")
-            for (let element of liste) {
+
+            // Kan ta tak i ett element:
+            console.log(liste[0]) // Det første elementet
+            console.log(liste[4]) // Det siste elementet
+
+            // Sjekk hvor mange elementer det er:
+            console.log(liste.length)
+
+            // Endre ett element:
+            liste[0] = "Jeg er en tekst"
+            // Se på lista på nytt:
+            console.log(liste)
+
+            // Gå igjennom alle elementene:
+            console.log("--------- For-of-løkke: ------------------")
+            for (const element of liste) {
                 console.log(element)
             }
-            // Vi kan bruke ett enkelt element slik:
-            console.log("Aksesserer enkelt-elementer:")
-            console.log(liste[0]) // Det første elementet i lista
-            console.log(liste[1]) // Det andre  elementet i lista
 
-            // Listen har lengde:
-            console.log("lengde:", liste.length) // 5
-
-            // Hent ut det siste elementet i lista:
-            console.log(liste[liste.length - 1])
-
-
-
-
-
-            // Vi kan også bruke forEach:
-            console.log("Med forEach:")
-            liste.forEach( (element) => {
+            // Vi kan også bruke "foreach":
+            console.log("--------------- Foreach:  --------------")
+            liste.forEach((element) => {
                 console.log(element)
             })
 
-
-
-
-            
-            // Eller vi kan bruke en for-løkke:
-            console.log("Med en for-løkke:")
+            // Med en "vanlig" for-løkke:
+            console.log("------------ Med en vanlig for-løkke:")
             for (let i = 0; i < liste.length; i++) {
-                console.log(liste[i])
+                const element = liste[i]
+                console.log(element)
             }
 
-            // Vi kan legger til og fjerne elementer fra lista:
-            liste.pop() // Fjerner siste element
-            liste.push(6) // Legger til et element til slutt på lista
-            console.log("Listen etter endringer:", liste)
+            // Vi kan begynne med en tom liste, og pushe
+            // inn elementer slik:
+            let liste2 = []
+            liste2.push("Element nr 1")
+            liste2.push("element nummer 2")
+            console.log("liste2:", liste2)
 
-            // Trenger ikke å være tall som er "elementene" i lista:
-            liste.push("En tekst")
-            // Finnes flere måter å endre en liste på utover pop og push - google it!
-            
+            // Vi kan fjerne elementer med pop:
+            liste2.pop()
+            console.log("liste2, etter pop:", liste2)
+
+            let liste3 = [1, 2, 3, 4]
+            // Det finnes mange andre liste-operasjoner: google it!
+            // TODO: Fjern element nr 2 fra liste3 (Tips: Splice funksjonen)
         </script>
     </body>
 </html>
