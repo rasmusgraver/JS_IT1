@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flere tilfeldige kort</title>
+    <style>
+        .container img {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container"></div>
+    
+    <script>
+        // 1: Lag en liste med alle 52 kort
+        let kortstokk = []
+        const suits = ["hearts", "diamonds", "spades", "clubs"]
+        for (const suit of suits) {
+            for (let i = 1; i <= 13; i++) {
+                const kortNavn = "kortstokk/" + i + "_of_" + suit + ".png"
+                kortstokk.push(kortNavn)
+            }
+        }
+        // Se kortstokken vår:
+        console.log(kortstokk)
+        console.log(kortstokk[51]) // Se hva kort nr 52 er
+
+        // 2 Shuffle kortstokken:
+        kortstokk = kortstokk.sort(() => Math.random() - 0.5);
+        // Se kortstokken vår på nytt:
+        console.log(kortstokk)
+        console.log(kortstokk[51]) // Se hva kort nr 52 er
+
+
+        const containerElm = document.querySelector(".container")
+
+        for (let i = 0; i < 5; i++) {
+            const kort = kortstokk.pop()
+            const bilde = document.createElement("img")
+            bilde.src = kort
+            containerElm.appendChild(bilde)            
+        }
+        console.log("Antall kort i korstokken:", kortstokk.length)
+</script>
+
+</body>
+</html>
