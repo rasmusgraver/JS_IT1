@@ -45,7 +45,7 @@
             }
         }
         // 2 Shuffle kortstokken:
-        // kortstokk = kortstokk.sort(() => Math.random() - 0.5);
+        kortstokk = kortstokk.sort(() => Math.random() - 0.5);
 
         // Se kortstokken vår:
         console.log(kortstokk)
@@ -54,6 +54,22 @@
 
         // Gjør selv: "pop" ett kort og lag element og appendChild med det.
         // Dette er basisen for kortstokk-oppgaver. Så kan du lage spill og kabaler etc :)
+
+
+
+        const containerElm = document.querySelector(".container")
+
+        for (let i = 0; i < 12; i++) {
+            // "Popper" ut det siste kortet fra kortstokken:
+            const kortnavn = kortstokk.pop()
+            const kortBilde = document.createElement("img")
+            kortBilde.src = kortnavn
+            containerElm.appendChild(kortBilde)
+        }
+
+
+
+
 
     </script>
 
