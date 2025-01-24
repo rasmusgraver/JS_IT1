@@ -1,82 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Ballsprett canvas</title>
-        <style>
-            canvas {
-                border: 1px solid black;
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ballsprett canvas</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas></canvas>
+
+    <script>
+        const WIDTH = 400
+        const HEIGHT = 400
+        const canvas = document.querySelector("canvas")
+        canvas.height = HEIGHT
+        canvas.width = WIDTH
+
+        // konteksten (som vi bruker til å tegne med):
+        const ctx = canvas.getContext("2d")
+
+        // Lag en ball - den har x og y-posisjon, en radius,
+        // og fart i x- og y-retning:
+        const ball = {
+            x: 100,
+            y: 100,
+            radius: 20,
+            dx: 12,
+            dy: 7,
+        }
+
+        // Lag en funksjon som tegner ballen:
+        function tegnBall() {
+            ctx.beginPath()
+            ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2)
+            ctx.fillStyle = "red"
+            ctx.fill()
+        }
+
+        // Lag en funksjon som oppdaterer ballens posisjon:
+        function oppdaterBall() {
+            ball.x += ball.dx
+            ball.y += ball.dy
+
+            // Sjekk om ballen treffer veggen:
+            if (
+                ball.x + ball.radius > WIDTH ||
+                ball.x - ball.radius < 0
+            ) {
+                ball.dx *= -1 // snu fart i x-retning
             }
-            
-        </style>
-    </head>
-    <body>
-        <!-- Lag en canvas som ballen kan sprette i: -->
-        <canvas id="canvas" width="800" height="600"></canvas>
-
-        <script>
-            // canvas-elementet:
-            const canvas = document.querySelector("#canvas")
-
-            // konteksten (som vi bruker til å tegne med):
-            const ctx = canvas.getContext("2d")
-
-            // Lag en ball - den har x og y-posisjon, en radius, og fart i x- og y-retning:
-            const ball = {
-                x: 100,
-                y: 100,
-                radius: 20,
-                dx: 12,
-                dy: 7,
+            if (
+                ball.y + ball.radius > HEIGHT ||
+                ball.y - ball.radius < 0
+            ) {
+                ball.dy *= -1 // snu fart i y-retning
             }
+        }
 
-            // Lag en funksjon som tegner ballen:
-            function tegnBall() {
-                ctx.beginPath()
-                ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2)
-                ctx.fillStyle = "red"
-                ctx.fill()
-                ctx.closePath()
-            }
+        // Funksjon som tømmer canvas:
+        function clearCanvas() {
+            // ctx.clearRect(0, 0, WIDTH, HEIGHT)
+            // eller slik:
+            ctx.rect(0, 0, WIDTH, HEIGHT)
+            ctx.fillStyle = "blue"
+            ctx.fill()
+        }
 
-            // Lag en funksjon som oppdaterer ballens posisjon:
-            function oppdaterBall() {
-                ball.x += ball.dx
-                ball.y += ball.dy
+        // Funksjon som oppdaterer alt:
+        function oppdaterAlt() {
+            clearCanvas()
+            oppdaterBall()
+            tegnBall()
+            // Tegn neste frame:
+            requestAnimationFrame(oppdaterAlt)
+        }
 
-                // Sjekk om ballen treffer veggen:
-                if (
-                    ball.x + ball.radius > canvas.width ||
-                    ball.x - ball.radius < 0
-                ) {
-                    ball.dx *= -1
-                }
-                if (
-                    ball.y + ball.radius > canvas.height ||
-                    ball.y - ball.radius < 0
-                ) {
-                    ball.dy *= -1
-                }
-            }
+        // Start animasjonen:
+        // MERK: Beste måten er med requestAnimationFrame
+        // setInterval(oppdaterAlt, 50)
+        oppdaterAlt()
+    </script>
+</body>
 
-            // Lag en funksjon som tømmer canvas:
-            function clearCanvas() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height)
-            }
-
-            // Lag en funksjon som oppdaterer alt:
-            function oppdaterAlt() {
-                clearCanvas()
-                oppdaterBall()
-                tegnBall()
-                // Tegn neste frame:
-                requestAnimationFrame(oppdaterAlt)
-            }
-
-            // Start animasjonen:
-            // setInterval(oppdaterAlt, 50)
-            oppdaterAlt()
-        </script>
-    </body>
 </html>
