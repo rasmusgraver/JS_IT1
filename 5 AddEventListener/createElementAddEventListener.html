@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddEventListener på element vi lager</title>
+    <style>
+        .container>div {
+            height: 100px;
+            width: 100px;
+            border: 1px solid black;
+        }
+
+        .container>div.green {
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>AddEventListener på element vi lager med createElement</h1>
+
+    <div class="container">
+
+    </div>
+
+    <script>
+        const containerElm = document.querySelector(".container")
+
+        for (let i = 0; i < 10; i++) {
+            const divElm = document.createElement("div")
+            divElm.addEventListener("click", klikkBoks)
+            containerElm.appendChild(divElm)
+        }
+
+        function klikkBoks(event) {
+            console.log(event)
+            // Hva ble klikket på?
+            const target = event.target
+            target.classList.toggle("green")
+        }
+
+    </script>
+
+</body>
+
+</html>
