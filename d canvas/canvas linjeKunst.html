@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas LinjeKunst</title>
+    <style>
+        canvas {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas></canvas>
+
+    <script>
+        const WIDTH = 500
+        const HEIGHT = 500
+        const canvas = document.querySelector("canvas")
+        canvas.height = HEIGHT
+        canvas.width = WIDTH
+
+        // Antall spiker og avstand:
+        const antSpiker = 30
+        const spikerAvstand = WIDTH / antSpiker
+
+
+        // konteksten (som vi bruker til å tegne med):
+        const ctx = canvas.getContext("2d")
+
+        ctx.lineWidth = 1
+
+        function tegnLinje(startx, starty, stopx, stopy) {
+            ctx.beginPath()
+            ctx.moveTo(startx, starty)
+            ctx.lineTo(stopx, stopy)
+            ctx.stroke()
+        }
+
+        ctx.strokeStyle = "white"
+        for (let i = 0; i < antSpiker; i++) {            
+            tegnLinje(i*spikerAvstand, 0, WIDTH, i*spikerAvstand)
+        }
+        for (let i = 0; i < antSpiker; i++) {            
+            tegnLinje(0, i*spikerAvstand, i*spikerAvstand, HEIGHT)
+        }
+        ctx.strokeStyle = "yellow"
+        for (let i = 0; i < antSpiker; i++) {            
+            tegnLinje(0, HEIGHT-i*spikerAvstand, i*spikerAvstand, 0)
+        }
+        for (let i = 0; i < antSpiker; i++) {            
+            tegnLinje(i*spikerAvstand, HEIGHT, WIDTH, HEIGHT-i*spikerAvstand)
+        }
+
+
+        ctx.strokeStyle = "white"
+        ctx.lineWidth = 2
+
+        // Tegn en sirkel:
+        ctx.beginPath()
+        ctx.arc(WIDTH / 2, HEIGHT / 2, 40, 0, 2 * Math.PI)
+        ctx.stroke()
+
+    </script>
+</body>
+
+</html>

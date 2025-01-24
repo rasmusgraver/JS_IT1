@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Intro</title>
+    <style>
+        body {
+            background-color: lightblue;
+        }
+
+        canvas {
+            border: 1px solid black;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas></canvas>
+
+    <script>
+        const HEIGHT = 300
+        const WIDTH = 500
+        const canvas = document.querySelector("canvas")
+        canvas.width = WIDTH
+        canvas.height = HEIGHT
+
+        // konteksten (som vi bruker til å tegne med):
+        const ctx = canvas.getContext("2d")
+
+        ctx.lineWidth = 10
+
+        function tegnLinje(startx, starty, stopx, stopy, farge) {
+            ctx.strokeStyle = farge
+            ctx.beginPath()
+            ctx.moveTo(startx, starty)
+            ctx.lineTo(stopx, stopy)
+            ctx.stroke()
+        }
+
+        tegnLinje(0, 0, WIDTH, HEIGHT, "blue")
+        tegnLinje(WIDTH, 0, 0, HEIGHT, "red")
+
+        // Tegn en sirkel:
+        ctx.beginPath()
+        ctx.arc(WIDTH / 2, HEIGHT / 2, 40, 0, 2 * Math.PI)
+        ctx.closePath()
+        ctx.fillStyle = "orange"
+        ctx.lineWidth = 2
+        ctx.fill()
+        ctx.strokeStyle = "black"
+        ctx.stroke()
+
+    </script>
+</body>
+
+</html>
