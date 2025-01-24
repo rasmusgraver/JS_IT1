@@ -44,24 +44,16 @@
                 kortstokk.push(kortNavn)
             }
         }
+        // 2 Shuffle kortstokken:
+        // kortstokk = kortstokk.sort(() => Math.random() - 0.5);
+
         // Se kortstokken vår:
         console.log(kortstokk)
         console.log(kortstokk[51]) // Se hva kort nr 52 er
 
-        // 2 Shuffle kortstokken:
-        kortstokk = kortstokk.sort(() => Math.random() - 0.5);
 
-        // Se kortstokken vår etter shuffling:
-        console.log(kortstokk)
-        console.log(kortstokk[51]) // Se hva kort nr 52 er
-
-
-        // Gå igjennom kortene, og legg dem ut på bordet:
-        for (const kortNavn of kortstokk) {
-            const imgElm = document.createElement("img")
-            imgElm.src = kortNavn
-            document.querySelector(".container").appendChild(imgElm)
-        }
+        // Gjør selv: "pop" ett kort og lag element og appendChild med det.
+        // Dette er basisen for kortstokk-oppgaver. Så kan du lage spill og kabaler etc :)
 
     </script>
 
