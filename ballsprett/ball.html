@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BallSprett</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            /* Overflow hidden gjør at vi unngår scrollbars når 
+               ballen er så vidt utenfor skjermen*/
+            overflow: hidden;
+        }
+
+        #ball {
+            width: 200px;
+            height: 200px; /* MERK: Vi må sette en height for at offsetHeight skal fungere */
+            position: absolute;
+            left: 50px;
+            top: 50px
+        }
+    </style>
+</head>
+
+<body>
+    <img src="ball.png" alt="ball" id="ball">
+
+    <script>
+        const ballElm = document.getElementById("ball")
+        let venstre = 50
+        let topp = 50
+        let x_fart = 4
+        let y_fart = 3
+        const WIDTH = document.body.offsetWidth
+        const HEIGHT = document.body.offsetHeight
+        const BALL_WIDTH = ballElm.offsetWidth
+        const BALL_HEIGTH = ballElm.offsetHeight
+
+
+        function detekterKollisjon() {
+            // Detekter kollisjon i x-retning:
+            if (venstre >= WIDTH - BALL_WIDTH || venstre <= 0) {
+                // snu farten:
+                x_fart *= -1
+            }
+            // Detekter kollisjon i y-retning:
+            if (topp >= HEIGHT - BALL_HEIGTH || topp <= 0) {
+                // snu farten:
+                y_fart *= -1
+            }
+        }
+
+        function flyttBall() {
+            // Flytt på ballen:
+            venstre += x_fart
+            topp += y_fart
+            ballElm.style.left = venstre + "px"
+            ballElm.style.top = topp + "px"
+        }
+
+        function oppdater() {
+            // Hoved-funksjonen vår
+            detekterKollisjon()
+            flyttBall()
+        }
+
+        setInterval(oppdater, 10)
+    </script>
+</body>
+
+</html>
