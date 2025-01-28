@@ -64,9 +64,12 @@
             // Hoved-funksjonen vår
             detekterKollisjon()
             flyttBall()
+            // setTimeout(oppdater, 10)
+            requestAnimationFrame(oppdater)
         }
 
-        setInterval(oppdater, 10)
+        oppdater()
+        // setInterval(oppdater, 10)
     </script>
 </body>
 
