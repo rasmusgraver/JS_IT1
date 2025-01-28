@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Intro</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const canvasElm = document.getElementById("canvas")
+        const WIDTH = 500
+        const HEIGHT = 500
+        canvasElm.width = WIDTH
+        canvasElm.height = HEIGHT
+
+        // konteksten (som vi bruker til å tegne med):
+        const ctx = canvas.getContext("2d")
+
+        ctx.lineWidth = 10
+
+        // Tegn en linje:
+        ctx.strokeStyle = "red"
+        ctx.beginPath();
+        ctx.moveTo(0, 0)
+        ctx.lineTo(WIDTH, HEIGHT)
+        ctx.stroke()
+
+        // Tegn andre linja i krysset:
+        ctx.strokeStyle = "blue"
+        ctx.beginPath();
+        ctx.moveTo(WIDTH, 0)
+        ctx.lineTo(0, HEIGHT)
+        ctx.stroke()
+
+        // Firkant med fyll:
+        ctx.beginPath();
+        ctx.rect(WIDTH - 150, WIDTH - 100, 150, 100);
+        ctx.fillStyle = "red";
+        ctx.fill();
+
+        function tegnFirkant(x, y) {
+            // Tegn en firkant:
+            ctx.beginPath();
+            ctx.strokeStyle = "orange"
+            ctx.lineWidth = 4
+            ctx.strokeRect(x, y, 150, 100);
+        }
+
+        tegnFirkant(0, 10)
+        tegnFirkant(100, 10)
+        tegnFirkant(200, 10)
+        // Tegn en firkant om 2 sec:
+        // setTimeout(tegnFirkant, 2000, 100, 200)
+
+        function tegnSirkel(x, y, radius) {
+            // tegn en sirkel:
+            ctx.strokeStyle = "green"
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, 2 * Math.PI);
+            ctx.stroke();
+        }
+
+        setTimeout(tegnSirkel, 1000, WIDTH / 2, HEIGHT / 2, 20)
+        setTimeout(tegnSirkel, 1500, WIDTH / 2, HEIGHT / 2, 30)
+        setTimeout(tegnSirkel, 2000, WIDTH / 2, HEIGHT / 2, 40)
+
+
+        // eller med en for-løkke:
+        for (let i = 0; i < 40; i++) {
+            setTimeout(tegnSirkel, (i+1)*300, WIDTH / 2, HEIGHT / 2, (i+1)*10)
+        }
+
+    </script>
+
+</body>
+
+</html>
