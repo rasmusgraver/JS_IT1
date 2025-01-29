@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // Vi oppretter en liste slik:
+        // en tom liste:
+        const liste = []
+        // en liste med 3 "strenger":
+        const liste2 = ["Hei", "på", "deg"] 
+        // en liste med 2 tall:
+        const liste3 = [4, 17]
+        // en liste med litt av hvert:
+        const liste4 = ["hei", 1, 4.2, false, true, null]
+
+        // Vi kan "aksessere" et element slik:
+        liste4[0] // det første elementet i liste4
+        liste4[1] // det andre elementet i liste4
+
+        // Vi kan både "lese" og "skrive" til elementet:
+        console.log("liste4 første element:", liste4[0])
+        if (liste4[1] == 1) {
+            console.log("Det andre elementet i liste4 er lik 1")
+        }
+        // Vi kan også endre det ("skrive" til det):
+        // (MERK: Det går selvom liste4 er "const")
+        liste4[0] = 12 // Setter det første elementet til 12
+
+        console.log("liste4 =", liste4)
+
+    </script>
+</body>
+</html>

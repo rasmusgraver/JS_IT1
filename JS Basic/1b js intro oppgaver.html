@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Intro oppgaver</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+         * OPPGAVE 1: Sparing
+         * - Du setter inn tusen kr på konto
+         * - Du får 5% rente hvert år
+         * - Hvor mange år før du har hundre tusen kr?
+         */
+        let saldo = 1000
+        const vekstfaktor = 1.05
+        let aar = 0
+        while (saldo < 100000) {
+            saldo = saldo * vekstfaktor
+            aar++
+            console.log("Saldo:", Math.round(saldo))
+        }
+        console.log("Ferdig! Sluttsaldo er", Math.round(saldo))
+        console.log("Det tok", aar, "år")
+        /*
+        * OPPGAVE 2: Sjakkspill
+        * Det sies at han som oppfant sjakk ble spurt om hva
+        * han skulle ha i betaling. Han var beskjeden, og ba
+        * om 1 riskorn for den første ruta, 2 for den neste,
+        * 4 for den tredje, 8 for den fjerde osv.
+        * - Var mannen egentlig beskjeden? Hvor mange riskorn blir det totalt?
+        */
+        let riskorn = 1
+        let total = 0
+        for (let rute = 1; rute <= 64; rute++) {
+                console.log("Rute nr", rute, "Antall riskorn:", riskorn)
+                total += riskorn
+                riskorn *= 2
+        }
+        console.log("Totalt antall riskorn er", total)
+        const kgRis = total/50000 // Det er ca 50.000 riskorn på 1kg ris
+        const tonnRis = kgRis/1000
+        console.log("Det tilsvarer", tonnRis, "tonn")
+        const megaTonn = tonnRis/1000000
+        console.log("Eller", megaTonn, "MegaTonn")
+    </script>
+
+</body>
+
+</html>

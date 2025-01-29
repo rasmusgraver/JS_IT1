@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Element By ID og QuerySelector</title>
+    <style>
+        .container {
+            display: flex;
+            gap: 20px;
+            width: fit-content;
+            margin: 100px auto;
+            background-color: aqua;
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 20px;
+        }
+        .container > div {
+            height: 100px;
+            width: 100px;
+            border: 1px solid black;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div></div>
+        <div id="div_to"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    
+    <script>
+        // Oppgave 1: Ta tak i "div_to" og gjør den grønn
+        const divTo = document.getElementById("div_to")
+        divTo.style.backgroundColor = "green"
+        divTo.innerHTML = "Tekst fra JS"
+        divTo.style.color = "white"
+        divTo.style.fontSize = "20px"
+        // Oppgave 2: Ta tak i siste div'en (querySelector) og farg den rød
+        const lastDiv = document.querySelector(".container > div:last-child")
+        console.log(lastDiv)
+        lastDiv.style.backgroundColor = "red"
+    </script>
+</body>
+</html>
