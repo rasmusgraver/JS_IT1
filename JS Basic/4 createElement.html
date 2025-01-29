@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreateElement og AppendChild</title>
+    <style>
+        body>div {
+            min-height: 200px;
+            margin: 30px;
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 20px;
+            background-color: aliceblue;
+        }
+
+        img {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CreateElement og AppendChild</h1>
+
+    <div id="div1"></div>
+    <div id="div2"></div>
+
+    <script>
+        const divEn = document.getElementById("div1")
+        const divTo = document.getElementById("div2")
+        // Når vi oppretter et element må vi også appende det!
+
+        // Oppgave 1: Lag et p-element og legg til i div1
+        const pElm = document.createElement("p")
+        pElm.innerHTML = "Hei fra JS"
+        divEn.appendChild(pElm)
+
+        // Oppgave 2: Opprett et img element og legg til i div2
+        const imgElm = document.createElement("img")
+        imgElm.src = "bilder/ball.png"
+        divTo.appendChild(imgElm)
+
+        // Gjør dette mange ganger:
+        for (let i = 0; i < 40; i++) {
+            const imgElm = document.createElement("img")
+            imgElm.src = "bilder/ball.png"
+            divTo.appendChild(imgElm)
+        }
+
+    </script>
+</body>
+
+</html>
