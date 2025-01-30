@@ -1,89 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Mitt spill</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mitt spill</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <div class="container">
-        <h1>Memory</h1>
-        <div class="klikkcontainer">
-            <h2>Antall trykk:</h2>
-            <p id="klikk">0</p>
+    <body>
+        <div class="container">
+            <h1>Memory</h1>
+            <div class="klikkcontainer">
+                <h2>Antall trykk:</h2>
+                <p id="klikk">0</p>
+            </div>
+            <div class="vinner"></div>
+            <div class="spill"></div>
+            <button class="nystart" onclick="window.location.reload();">
+                Prøv igjen
+            </button>
         </div>
-        <div class="vinner"></div>
-        <div class="spill"></div>
-        <button class="nystart" onclick="window.location.reload();">Prøv igjen</button>
 
-    </div>
-
-    <script>
-        const emojis = ["😍", "😍", "😵‍💫", "😵‍💫", "🤩", "🤩", "🥳", "🥳", "🫣", "🫣", "🥶", "🥶", "🙄", "🙄", "🤪", "🤪"]
-        // Vi "sjuffler" emoji-listen vår:
-        const shuf_emojis = emojis.sort(() => Math.random() - 0.5)
-
-        // Teller for antall klikk
-        const klikkDisplay = document.getElementById('klikk');
-        let klikkCount = 0
-
-        function sjekkForSeier() {
-            if (document.querySelectorAll('.boxMatch').length == emojis.length) {
-                const vinnerElement = document.querySelector('.vinner')
-                vinnerElement.style.display = 'block' // Viser vinner-diven
-                vinnerElement.textContent = 'Gratulerer, du vant med ' + klikkCount + ' trykk!' // Legger til melding
+        <script>
+            function sjekkForSeier() {
+                if (
+                    document.querySelectorAll(".boxMatch").length ==
+                    emojis.length
+                ) {
+                    const vinnerElement = document.querySelector(".vinner")
+                    vinnerElement.style.display = "block" // Viser vinner-diven
+                    vinnerElement.textContent =
+                        "Gratulerer, du vant med " + klikkCount + " trykk!" // Legger til melding
+                }
             }
-        }
 
-        // Funksjon som kalles med en liten timeout etter en boks er klikket
-        // Timeouten sørger for at ikke boksene lukker seg med en gang
-        function boksKlikk() {
-            const openBoxes = document.querySelectorAll('.boxOpen')
-            if (openBoxes.length > 1) {
-                // Mer enn 1 boks er åpen: Sjekk om de er like, og lukk dem:
+            // Funksjon som kalles med en liten timeout etter en boks er klikket
+            // Timeouten sørger for at ikke boksene lukker seg med en gang
+            function boksKlikk() {
+                const openBoxes = document.querySelectorAll(".boxOpen")
+                if (openBoxes.length > 1) {
+                    // Mer enn 1 boks er åpen: Sjekk om de er like, og lukk dem:
 
-                if (openBoxes[0].innerHTML == openBoxes[1].innerHTML) {
-                    // De er like: Marker dem
-                    openBoxes[0].classList.add('boxMatch')
-                    openBoxes[1].classList.add('boxMatch')
+                    if (openBoxes[0].innerHTML == openBoxes[1].innerHTML) {
+                        // De er like: Marker dem
+                        openBoxes[0].classList.add("boxMatch")
+                        openBoxes[1].classList.add("boxMatch")
 
-                    // Sjekk om alle er funnet:
-                    sjekkForSeier()
+                        // Sjekk om alle er funnet:
+                        sjekkForSeier()
+                    }
+
+                    // Lukk alle (begge) åpne bokser:
+                    openBoxes.forEach((box) => {
+                        box.classList.remove("boxOpen")
+                    })
+                }
+            }
+
+            const emojis = [
+                "😍",
+                "😍",
+                "😵‍💫",
+                "😵‍💫",
+                "🤩",
+                "🤩",
+                "🥳",
+                "🥳",
+                "🫣",
+                "🫣",
+                "🥶",
+                "🥶",
+                "🙄",
+                "🙄",
+                "🤪",
+                "🤪",
+            ]
+            // Vi "sjuffler" emoji-listen vår:
+            const shuf_emojis = emojis.sort(() => Math.random() - 0.5)
+
+            // Teller for antall klikk
+            const klikkDisplay = document.getElementById("klikk")
+            let klikkCount = 0
+
+            for (let i = 0; i < emojis.length; i++) {
+                let box = document.createElement("div")
+                box.className = "item"
+                box.innerHTML = shuf_emojis[i]
+
+                box.onclick = function () {
+                    // Øk klikk-telleren
+                    klikkCount++
+                    // Oppdater visning av klikk på skjermen
+                    klikkDisplay.textContent = klikkCount
+
+                    this.classList.add("boxOpen")
+                    // Hvis mer enn 1 boks er åpen (helst bare 2) så sett en timeout
+                    // som sjekker på match og lukker boksene igjen:
+                    if (document.querySelectorAll(".boxOpen").length > 1) {
+                        setTimeout(boksKlikk, 500)
+                    }
                 }
 
-                // Lukk alle (begge) åpne bokser:
-                openBoxes.forEach(box => {
-                    box.classList.remove('boxOpen')
-                })
-
+                document.querySelector(".spill").appendChild(box)
             }
-        }
-
-
-        for (let i = 0; i < emojis.length; i++) {
-            let box = document.createElement('div')
-            box.className = 'item'
-            box.innerHTML = shuf_emojis[i]
-
-            box.onclick = function () {
-                // Øk klikk-telleren
-                klikkCount++
-                // Oppdater visning av klikk på skjermen
-                klikkDisplay.textContent = klikkCount
-
-                this.classList.add('boxOpen')
-                // Hvis mer enn 1 boks er åpen (helst bare 2) så sett en timeout 
-                // som sjekker på match og lukker boksene igjen:
-                if (document.querySelectorAll('.boxOpen').length > 1) {
-                    setTimeout(boksKlikk, 500)
-                }
-            };
-
-
-            document.querySelector('.spill').appendChild(box)
-        }
-    </script>
-</body>
+        </script>
+    </body>
+</html>

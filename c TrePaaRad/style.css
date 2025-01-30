@@ -27,7 +27,6 @@ body {
     gap: 30px;
     background-color: pink;
     padding: 40px 60px;
-
 }
 
 .klikkcontainer {
@@ -37,8 +36,6 @@ body {
     background-color: pink;
     border: 2px solid rgb(235, 66, 176);
 }
-
-
 
 h1 {
     font-weight: 400;
@@ -55,8 +52,6 @@ h2 {
     letter-spacing: 2px;
 }
 
-
-
 .vinner {
     display: none;
     text-align: center;
@@ -66,7 +61,6 @@ h2 {
     border: 2px solid rgb(177, 5, 99);
     border-radius: 10px;
 }
-
 
 .nystart {
     padding: 15px 20px;
@@ -113,7 +107,7 @@ h2 {
 }
 
 .item::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     background-color: rgb(235, 66, 176);
@@ -125,5 +119,4 @@ h2 {
 .boxOpen::after,
 .boxMatch::after {
     transform: rotateY(180deg);
-
 }
