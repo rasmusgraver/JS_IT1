@@ -74,9 +74,9 @@ h2 {
     font-weight: 600;
 }
 
-.nystart:focus {
+.nystart:hover {
     color: palevioletred;
-    background-color: pink;
+    background-color: lightblue;
 }
 
 .spill {
