@@ -22,7 +22,11 @@
         </div>
 
         <script>
+            const spillElm = document.querySelector(".spill")
+            const klikkElm = document.getElementById("klikk")
+
             function sjekkForSeier() {
+                // Sjekker om alle boksene er funnet:
                 if (
                     document.querySelectorAll(".boxMatch").length ==
                     emojis.length
@@ -40,9 +44,8 @@
                 const openBoxes = document.querySelectorAll(".boxOpen")
                 if (openBoxes.length > 1) {
                     // Mer enn 1 boks er åpen: Sjekk om de er like, og lukk dem:
-
                     if (openBoxes[0].innerHTML == openBoxes[1].innerHTML) {
-                        // De er like: Marker dem
+                        // De er like: Marker dem som funnet:
                         openBoxes[0].classList.add("boxMatch")
                         openBoxes[1].classList.add("boxMatch")
 
@@ -79,7 +82,6 @@
             const shuf_emojis = emojis.sort(() => Math.random() - 0.5)
 
             // Teller for antall klikk
-            const klikkDisplay = document.getElementById("klikk")
             let klikkCount = 0
 
             for (let i = 0; i < emojis.length; i++) {
@@ -87,21 +89,23 @@
                 box.className = "item"
                 box.innerHTML = shuf_emojis[i]
 
-                box.onclick = function () {
-                    // Øk klikk-telleren
+                // Definerer click-funksjonen for boksene (hva som skjer når en boks klikkes på)
+                box.addEventListener("click", function () {
+                    // Oppdater visning av klikk på skjermen:
                     klikkCount++
-                    // Oppdater visning av klikk på skjermen
-                    klikkDisplay.textContent = klikkCount
+                    klikkElm.textContent = klikkCount
 
+                    // Klassen boxOpen gjør at boksen vises
                     this.classList.add("boxOpen")
+
                     // Hvis mer enn 1 boks er åpen (helst bare 2) så sett en timeout
                     // som sjekker på match og lukker boksene igjen:
                     if (document.querySelectorAll(".boxOpen").length > 1) {
                         setTimeout(boksKlikk, 500)
                     }
-                }
+                })
 
-                document.querySelector(".spill").appendChild(box)
+                spillElm.appendChild(box)
             }
         </script>
     </body>
