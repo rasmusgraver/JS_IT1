@@ -1,11 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tegneprogram</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(20, 24px);
+            grid-template-rows: repeat(20, 24px);
+        }
+
+        .container>div {
+            border: 1px solid black;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="container">
+        <!-- JS legger til korrekt antall div'er her -->
+    </div>
+
+    <script>
+        const containerElm = document.querySelector(".container")
+
+        for (let i = 0; i < 20 * 20; i++) {
+            const divElm = document.createElement("div")
+            containerElm.appendChild(divElm)
+
+            divElm.addEventListener("mouseover", function (event) {
+                console.log(event)
+                const targetElm = event.target
+                let color = "blue"
+                if (event.shiftKey) {
+                    color = "green"
+                } else if (event.ctrlKey) {
+                    color = "red"
+                } else if (event.altKey) {
+                    color = "pink"
+                }
+
+                targetElm.style.backgroundColor = color
+            })
+        }
+
+    </script>
 </body>
+
 </html>
