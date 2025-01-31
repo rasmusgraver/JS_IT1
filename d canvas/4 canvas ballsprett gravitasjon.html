@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ballsprett canvas</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas></canvas>
+
+    <script>
+        const WIDTH = 400
+        const HEIGHT = 400
+        const canvas = document.querySelector("canvas")
+        canvas.height = HEIGHT
+        canvas.width = WIDTH
+
+        const GRAVITASJON = 0.5
+
+        // konteksten (som vi bruker til å tegne med):
+        const ctx = canvas.getContext("2d")
+
+        // Lag en ball - den har x og y-posisjon, en radius,
+        // og fart i x- og y-retning:
+        const ball1 = {
+            x: 100,
+            y: 100,
+            radius: 20,
+            farge: "red",
+            dx: 7,
+            dy: 3,
+        }
+        const ball2 = {
+            x: 100,
+            y: 100,
+            radius: 40,
+            farge: "yellow",
+            dx: 2,
+            dy: -5,
+        }
+
+        // Lag en funksjon som tegner ballen:
+        function tegnBall(ball) {
+            ctx.beginPath()
+            ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2)
+            ctx.fillStyle = ball.farge
+            ctx.fill()
+        }
+
+        // Lag en funksjon som oppdaterer ballens posisjon:
+        function oppdaterBall(ball) {
+
+            // Farten i y-retning blir påvirket av gravitasjonen
+            ball.dy += GRAVITASJON
+
+            ball.x += ball.dx
+            ball.y += ball.dy
+
+            // Sjekk om ballen treffer veggen:
+            if (
+                ball.x + ball.radius > WIDTH ||
+                ball.x - ball.radius < 0
+            ) {
+                ball.dx *= -1 // snu fart i x-retning
+            }
+            if (
+                ball.y + ball.radius > HEIGHT ||
+                ball.y - ball.radius < 0
+            ) {
+                ball.dy *= -1 // snu fart i y-retning
+            }
+
+            if (ball.y + ball.radius > HEIGHT) {
+                // "Tving" ballen opp igjen:
+                ball.y = HEIGHT - ball.radius
+            }
+
+        }
+
+        // Funksjon som tømmer canvas:
+        function clearCanvas() {
+            // ctx.clearRect(0, 0, WIDTH, HEIGHT)
+            // eller slik:
+            ctx.rect(0, 0, WIDTH, HEIGHT)
+            ctx.fillStyle = "blue"
+            ctx.fill()
+        }
+
+        // Funksjon som oppdaterer alt:
+        function oppdaterAlt() {
+            clearCanvas()
+            oppdaterBall(ball1)
+            oppdaterBall(ball2)
+            tegnBall(ball1)
+            tegnBall(ball2)
+            // Tegn neste frame:
+            requestAnimationFrame(oppdaterAlt)
+        }
+
+        // Start animasjonen:
+        // MERK: Beste måten er med requestAnimationFrame
+        // setInterval(oppdaterAlt, 50)
+        oppdaterAlt()
+    </script>
+</body>
+
+</html>
