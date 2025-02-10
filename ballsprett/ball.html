@@ -52,7 +52,12 @@
             }
         }
 
+        const GRAVITASJON = 0.5
+
         function flyttBall() {
+            // Gravitasjon påvirker farten i y-retning:
+            y_fart += GRAVITASJON
+
             // Flytt på ballen:
             venstre += x_fart
             topp += y_fart
