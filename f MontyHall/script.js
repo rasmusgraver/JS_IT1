@@ -1,10 +1,10 @@
 let harValgt = false
 
-const vinnerDoer = Math.floor(Math.random() * 3) + 1
-console.log("Vinnerdøren er nr", vinnerDoer)
+const vinnerTall = Math.floor(Math.random() * 3) + 1
+console.log("Vinnertaller er ", vinnerTall)
 
 // Hent opp dør nr "vinnerDoer" og bytt geit-bilde til ferrari
-const vinnerBilde = document.querySelector("#door" + vinnerDoer + " > .goat ")
+const vinnerBilde = document.querySelector("#door" + vinnerTall + " > .goat ")
 console.log(vinnerBilde)
 vinnerBilde.src = "media/ferrari.png"
 
@@ -28,6 +28,11 @@ function klikkDor(event) {
     console.log(goatImg.src)
     if (goatImg.src.includes("ferrari")) {
         console.log("DU VANT")
+        document.body.style.backgroundColor = "palegreen"
+        goatImg.style.width = "300%"
+        goatImg.style.zIndex = "3"
+        goatImg.style.left = "-" + 40 * vinnerTall + "%" // Måtte "hacke" til litt her - for at bilden skulle flyte ut på rett sted.
+        goatImg.style.top = "0"
     }
 
     setTimeout(openDor, 600, dorImg)
