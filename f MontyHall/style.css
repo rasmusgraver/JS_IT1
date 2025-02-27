@@ -3,52 +3,24 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 img {
     width: 100%;
 }
-
 body {
     height: 100vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-button {
-    background-color: bisque;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 60px;
-    padding: 20px;
-    border-radius: 20px;
-}
-
-.doorContainer {
-    margin-left: -3000px;
-    transition: 1s;
-    height: 0;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-
-.doorContainer .text {
-    font-size: 30px;
-}
-
 .doors {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 30px;
-    padding: 20px 40px;
+    padding: 40px;
 }
-
-.doors>div {
+.doors > div {
+    border: 1px solid black;
     position: relative;
 }
 
@@ -56,7 +28,7 @@ button {
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 40px;
+    padding: 20px;
     z-index: -1;
-    transition: 1s;
 }
+
