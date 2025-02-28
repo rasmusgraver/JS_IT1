@@ -9,6 +9,7 @@ img {
 body {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -18,9 +19,10 @@ body {
     justify-content: center;
     gap: 30px;
     padding: 40px;
+    margin-left: -3000px;
+    transition: 1s;
 }
 .doors > div {
-    border: 1px solid black;
     position: relative;
 }
 
