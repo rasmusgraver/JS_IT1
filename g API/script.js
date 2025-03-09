@@ -11,12 +11,8 @@ btn.addEventListener("click", () => {
     }
 })
 
-//     fetch(`https://jsonplaceholder.typicode.com/posts/${number.value}`)
-
 async function fetchData(tall) {
-    const response = await fetch(
-        "http://numbersapi.com/" + tall + "/trivia?json"
-    )
+    const response = await fetch("http://numbersapi.com/" + tall + "?json")
     const data = await response.json()
     output.innerHTML = data.text
 }
