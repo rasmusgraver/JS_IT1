@@ -1,50 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>API Eksempel</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>API Eksempel</title>
-    <link rel="stylesheet" href="style.css" />
-</head>
+    <body>
+        <section>
+            <h1>JS API Demo</h1>
+            <div>
+                <input type="number" id="number" placeholder="tall" />
+                <button id="btn">Hent info</button>
+            </div>
+            <p id="output">Skriv inn et tall i boksen</p>
+        </section>
 
-<body>
-    <section>
-        <h1>JS API Demo</h1>
-        <div>
-            <input type="number" id="number" placeholder="tall" />
-            <button onclick="klikkKnapp()">Hent info</button>
-        </div>
-        <p id="output">Skriv inn et tall i boksen</p>
-    </section>
-
-    <script>
-        const inputElm = document.getElementById("number")
-        const outputElm = document.getElementById("output")
-
-        async function klikkKnapp() {
-            const tallet = inputElm.value
-            if (tallet < 0) {
-                outputElm.innerHTML = "Du må skrive et positivt tall"
-                inputElm.value = ""
-            } else {
-                outputElm.innerHTML = "Henter info om tallet..."
-                const response = await fetch("http://numbersapi.com/" + tallet + "?json")
-                if (response.status == 200) {
-                    console.log(response)
-                    const funfactJSON = await response.json()
-                    if (funfactJSON.found == true) {
-                        outputElm.innerHTML = funfactJSON.text
-                    } else {
-                        outputElm.innerHTML = "Fant ingen fakta om det tallet"
-                    }
-                } else {
-                    outputElm.innerHTML = "Requesten feilet med status " + response.status
-                }
-            }
-        }
-    </script>
-    
-</body>
-
+        <script src="script2.js"></script>
+    </body>
 </html>
