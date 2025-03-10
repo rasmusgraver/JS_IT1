@@ -1,4 +1,23 @@
-const inputElm = document.getElementById("number")
-const output = document.getElementById("output")
+const containerElm = document.querySelector(".container")
 
-// TODO: Bruk APIet til dadjokes og hent en tilfeldig dadjoke
+containerElm.addEventListener("click", () => {
+    console.log("Trykket på container")
+
+    fetch("https://icanhazdadjoke.com/",
+        {
+            headers: {
+                Accept: "application/json",
+            },
+        }
+    )
+        .then((response) => {
+            console.log(response)
+            return response.json()
+        })
+        .then((data) => {
+            console.log(data)
+            containerElm.innerHTML = data.joke
+        })
+
+})
+
