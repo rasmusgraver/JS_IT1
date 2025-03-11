@@ -5,6 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cat Images</title>
+    <style>
+        #kattBilde {
+            width: 300px;
+            margin: 30px auto;
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
@@ -22,6 +29,9 @@
                     kattBilde.src = imageUrl
                 });
         })
+
+        // Vi vil laste inn et bilde fra start: Kan "trigge" et klikk slik:
+        kattBilde.click()
 
     </script>
 
