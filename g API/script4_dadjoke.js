@@ -1,4 +1,3 @@
-// TODO: Bruk dad joke APIet fra https://icanhazdadjoke.com/api
 const containerElm = document.querySelector(".container")
 
 containerElm.addEventListener("click", () => {
