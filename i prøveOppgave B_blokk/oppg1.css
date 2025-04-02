@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container {
+    display: grid;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.container > div {
+    aspect-ratio: 1;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: aliceblue;
+    padding: 10px;
+    text-align: center;
+}
+
+.container > div.blaa {
+    background-color: darkblue;
+    color: white;
+}
