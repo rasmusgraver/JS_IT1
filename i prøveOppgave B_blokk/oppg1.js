@@ -22,6 +22,7 @@ function lagBoks() {
     h1Elm.innerHTML = "Boks " + teller
     teller++
     boks.appendChild(h1Elm)
+    boks.addEventListener("click", lagBoks)
     container.appendChild(boks)
 }
 boks4.addEventListener("click", lagBoks)
