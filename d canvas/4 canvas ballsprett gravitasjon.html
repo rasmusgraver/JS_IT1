@@ -49,6 +49,21 @@
 
         const baller = [ball1, ball2]
 
+        function addBall() {
+            const nyBall = {
+                x: 100,
+                y: 100,
+                radius: 40,
+                farge: "green",
+                dx: 2,
+                dy: -5,
+            }
+
+            baller.push(nyBall)
+        }
+
+        document.querySelector("canvas").addEventListener("click", addBall)
+
 
         // Lag en funksjon som tegner ballen:
         function tegnBall(ball) {
